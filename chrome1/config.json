@@ -1,0 +1,20 @@
+{
+    "model_filename": "model.tflite",
+    "override_list_filename": "override_list.tsv",
+    "override_list_input_column": "domain",
+    "override_list_topics_column": "topics",
+    "model_version": 1,
+    "taxonomy_filename": "taxonomy.tsv",
+    "taxonomy_version": 1,
+    "meaningless_prefix_regex": "^(www[0-9]*|web|ftp|wap|home|m|mobile|amp|w)\\.",
+    "meaningless_prefix_version": 2,
+    "utility_buckets_filename": null,
+    "utility_buckets_version": null,
+    "max_categories": 5,
+    "min_none_weight": 0.8,
+    "min_category_weight": 0.01,
+    "min_normalized_weight_within_top_n": 0.25,
+    "number_topics": 349,
+    "unknown_topic_name": "Unknown",
+    "unknown_topic_id": -2
+}

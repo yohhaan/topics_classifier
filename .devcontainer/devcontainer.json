@@ -1,0 +1,24 @@
+{
+    "name": "topics-classifier",
+    "dockerFile": "Dockerfile",
+    "postCreateCommand": "",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Other helpers
+                "shardulm94.trailing-spaces",
+                "stkb.rewrap", // rewrap comments after n characters on one line
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "tomoki1207.pdf"
+            ],
+            "settings": {
+                // General settings
+                "files.eol": "\n",
+                "rewrap.autoWrap.enabled": true,
+                "editor.formatOnSave": true
+            }
+        }
+    }
+}

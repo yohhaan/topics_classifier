@@ -1,0 +1,17 @@
+{
+    "model_filename": "model.tflite",
+    "override_list_filename": "precomputed_app_list.tsv",
+    "override_list_input_column": "app_id",
+    "override_list_topics_column": "topics",
+    "model_version": 2,
+    "model_max_characters_input": 1200,
+    "taxonomy_filename": "taxonomy.tsv",
+    "taxonomy_version": 2,
+    "utility_buckets": null,
+    "utility_buckets_version": null,
+    "max_categories": 3,
+    "min_category_weight": 0.1,
+    "number_topics": 446,
+    "unknown_topic_name": "Unknown",
+    "unknown_topic_id": -2
+}
