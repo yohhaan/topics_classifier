@@ -358,7 +358,7 @@ if __name__ == "__main__":
 
     if args.output_human_readable and args.ct == "raw-model":
         raise Exception(
-            "Output human readbale is not available with raw-model classification"
+            "Output human readable is not available with raw-model classification"
         )
 
     if args.model_version in chromeVersions:
