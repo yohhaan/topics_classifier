@@ -125,7 +125,7 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
         # Sum scores, check if unknown topic in there
         for t in topics:
             top_sum += t.score
-            if t.category_name == self.config["unknown_topic_id"]:
+            if int(t.category_name) == self.config["unknown_topic_id"]:
                 unknown_score = t.score
         # if unknown topic there and too important, output unknown
         if unknown_score and unknown_score / top_sum > self.config["min_none_weight"]:
@@ -136,7 +136,7 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
             # go again through inferred topics, normalize scores, and check
             for t in topics:
                 if (
-                    t.category_name != -2
+                    int(t.category_name) != self.config["unknown_topic_id"]
                     and t.score >= self.config["min_category_weight"]
                     and t.score / top_sum
                     >= self.config["min_normalized_weight_within_top_n"]
