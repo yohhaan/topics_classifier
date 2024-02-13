@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y python3 \
     apt-get clean autoclean && \
     apt-get autoremove
 RUN pip3 install --break-system-packages --upgrade pip && \
-    pip3 install --break-system-packages inject black numpy pandas Pyarrow tflite-support
+    pip3 install --break-system-packages black numpy pandas Pyarrow tflite-support
 RUN addgroup --gid 1000 vscode
 RUN adduser --disabled-password --gecos "" --uid 1000 --gid 1000 vscode
 ENV HOME /home/vscode

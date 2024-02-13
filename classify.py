@@ -97,8 +97,7 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
         Clean the domain input: prune meaningless prefixes and replace some
         characters with a space
         """
-        # Grab regex from config files (support several version if updated
-        # later), and also convert to lower
+        # Grab regex from config files to remove meaningless prefixes  and also convert to lower case
         cleaned_input = re.sub(
             self.config["meaningless_prefix_regex"], "", input.lower()
         )
@@ -316,13 +315,13 @@ class AndroidTopicsAPIClassifier(TopicsAPIClassifier):
 if __name__ == "__main__":
     # Create Argument Parser
     parser = argparse.ArgumentParser(
-        prog="python3 classify.py", description="Implementation of the Topics API"
+        prog="python3 classify.py", description="Reimplementations of the Topics API"
     )
     req_grp = parser.add_argument_group(title="required optional arguments")
     req_grp.add_argument(
         "-mv",
         "--model_version",
-        choices=["chrome1", "chrome4", "android2"],
+        choices=["chrome1", "chrome4", "android1", "android2"],
         help="model version to use",
         required=True,
     )
