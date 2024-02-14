@@ -4,8 +4,15 @@ This repository reproduces Google's implementations of the Topics API [for the
 Web](https://privacysandbox.com/proposals/topics/) and [for
 Android](https://developer.android.com/design-for-safety/privacy-sandbox/topics).
 This is mainly used in [my
-research](https://petsymposium.org/popets/2024/popets-2024-0004.php) to study
-the privacy and utility guarantees of these proposals.
+research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html) to study
+the [privacy and utility guarantees](https://petsymposium.org/popets/2024/popets-2024-0004.php) of these proposals.
+
+## Getting started
+
+Clone this repository, then install the required dependencies. A Dockerfile is
+provided under `.devcontainer/`, see
+[here](https://gist.github.com/yohhaan/b492e165b77a84d9f8299038d21ae2c9) for
+direct integration with VS code or for manual deployment instructions.
 
 ## Usage
 ```
@@ -38,7 +45,8 @@ required optional arguments:
 
 - [`chrome4`](chrome4/config.json)
     - Web model version: 4
-    - Override list: 47 128 domains (about 50k)
+    - Override list: 47 128 domains (about 50k) -> 625 domains are incorrectly
+      formatted in the list shipped by Google, see [here](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
     - Web taxonomy version: 2 (469 topics)
     - Introduction of utility buckets: version 1
 
