@@ -1,1 +1,4 @@
 **/__pycache__/
+tools/chrome_validation.domains
+tools/chrome_validation_chrome4.tsv
+tools/chrome_validation_chrome_internals.tsv
