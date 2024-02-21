@@ -1,6 +1,7 @@
 import argparse
 import json
 import math
+import os
 import pandas as pd
 import re
 
@@ -23,7 +24,7 @@ class TopicsAPIClassifier:
         self.output_human_readable: str = output_human_readable
 
         # load config.json
-        with open(self.relative_path("/config.json"), "r") as f:
+        with open(self.relative_path("config.json"), "r") as f:
             self.config = json.load(f)
 
         # load taxonomy
@@ -49,7 +50,8 @@ class TopicsAPIClassifier:
         self.model = text.BertNLClassifier.create_from_options(options)
 
     def relative_path(self, filename: str) -> str:
-        return self.model_version + "/" + filename
+        dirname = os.path.dirname(__file__)
+        return dirname + "/" + self.model_version + "/" + filename
 
     def load_override_list(self, override_list_path: str) -> None:
         # Load manually curated list Android
