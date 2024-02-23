@@ -6,6 +6,8 @@
     "model_version": 1,
     "taxonomy_filename": "taxonomy.tsv",
     "taxonomy_version": 1,
+    "taxonomy_id_column": "ID",
+    "taxonomy_name_column": "Topic",
     "meaningless_prefix_regex": "^(www)\\.",
     "meaningless_prefix_version": 0,
     "utility_buckets_filename": null,

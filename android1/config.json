@@ -7,6 +7,8 @@
     "model_max_characters_input": 1200,
     "taxonomy_filename": "taxonomy.tsv",
     "taxonomy_version": 1,
+    "taxonomy_id_column": "ID",
+    "taxonomy_name_column": "Topic",
     "utility_buckets": null,
     "utility_buckets_version": null,
     "max_categories": 3,
