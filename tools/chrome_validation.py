@@ -1,3 +1,4 @@
+import argparse
 import os
 import pandas as pd
 import numpy as np
@@ -5,17 +6,16 @@ import sys
 import re
 
 
-def validation_parameters(validation_chrome_path, validation_beta_path):
+def validation_parameters(local_tsv, chrome_tsv):
     """
-    After running the ./validation_filtering.sh script, and having classified the
-    words used in the validation by Chrome Beta on chrome://topics-internals,
-    run this to get a list of correct/incorrect output
+    Compare local classification to the one performed by Google Chrome on
+    chrome://topics-internals
     """
     correct = []
     incorrect = []
-    df_validation_chrome = pd.read_csv(validation_chrome_path, sep="\t")
+    df_local = pd.read_csv(local_tsv, sep="\t")
 
-    with open(validation_beta_path, "r") as f:
+    with open(chrome_tsv, "r") as f:
         beta = f.readlines()
 
     for line in beta:
@@ -25,9 +25,7 @@ def validation_parameters(validation_chrome_path, validation_beta_path):
         ]  # remove the dot from find all with -1
         if ids_beta == []:
             ids_beta = [-2]
-        ids_model = np.array(
-            df_validation_chrome[df_validation_chrome["domain"] == domain]["topic"]
-        )
+        ids_model = np.array(df_local[df_local["domain"] == domain]["topic"])
         intersection = list(set(ids_model).intersection(ids_beta))
         if len(ids_beta) == len(intersection):
             correct.append(domain)
@@ -40,22 +38,22 @@ def validation_parameters(validation_chrome_path, validation_beta_path):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        raise ValueError(
-            "Incorrect number of arguments passed to script, need to be paths to both classification that need comparison"
-        )
+    # Create Argument Parser
+    parser = argparse.ArgumentParser(
+        prog="python3 chrome_validation.py",
+        description="Verify that local classification matches with Google Chrome's.",
+    )
+    parser.add_argument("local_tsv")
+    parser.add_argument("chrome_tsv")
+    args = parser.parse_args()
+
+    local_tsv = args.local_tsv
+    chrome_tsv = args.chrome_tsv
+
+    if not (os.path.isfile(local_tsv)) or not (os.path.isfile(chrome_tsv)):
+        raise Exception("Error: file(s) missing, check README.md")
     else:
-        validation_chrome_path = sys.argv[1]
-        validation_beta_path = sys.argv[2]
+        correct, incorrect = validation_parameters(local_tsv, chrome_tsv)
 
-        if not (os.path.isfile(validation_chrome_path)) or not (
-            os.path.isfile(validation_beta_path)
-        ):
-            raise Exception("Error: file(s) missing, check README.md")
-        else:
-            correct, incorrect = validation_parameters(
-                validation_chrome_path, validation_beta_path
-            )
-
-            print("Size of incorrect set: {}".format(len(incorrect)))
-            print("Incorrect set: {}".format(incorrect))
+        print("Size of incorrect set: {}".format(len(incorrect)))
+        print("Incorrect set: {}".format(incorrect))
