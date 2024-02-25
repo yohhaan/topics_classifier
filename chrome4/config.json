@@ -13,6 +13,16 @@
     "utility_buckets_filename": "utility_buckets.tsv",
     "utility_buckets_toplevel_column": "Top-Level Topics",
     "utility_buckets_utility_column": "Utility Buckets",
+    "utility_buckets_utility_levels": [
+        {
+            "name": "Standard",
+            "level": 0
+        },
+        {
+            "name": "High",
+            "level": 1
+        }
+    ],
     "utility_buckets_version": 1,
     "max_categories": 5,
     "min_none_weight": 0.8,
