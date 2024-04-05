@@ -136,7 +136,7 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
             and unknown_score / top_sum
             > struct.unpack("!f", bytes.fromhex(self.config["min_none_weight"]))[0]
         ):
-            self.print_output(input, int(t.category_name))
+            self.print_output(input, self.config["unknown_topic_id"])
         else:
             # to keep track if a topic other than unknown passes the filtering
             other = False
