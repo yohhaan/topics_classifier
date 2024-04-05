@@ -24,7 +24,7 @@ of the Topics API:
 - Run `python3 chrome_validation.py chrome_validation_chrome4.tsv
   chrome_validation_chrome_internals.tsv` to validate the local classification
   with the one implemented in Chrome (incorrect and correct sets are returned,
-  incorrect should be empty, but in practice it may not due to floating point encoding)
+  incorrect should be empty)
 
 
 ## Other

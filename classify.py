@@ -4,6 +4,7 @@ import math
 import os
 import pandas as pd
 import re
+import struct
 
 from tflite_support.task import core
 from tflite_support.task import text
@@ -130,7 +131,11 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
             if int(t.category_name) == self.config["unknown_topic_id"]:
                 unknown_score = t.score
         # if unknown topic there and too important, output unknown
-        if unknown_score and unknown_score / top_sum > self.config["min_none_weight"]:
+        if (
+            unknown_score
+            and unknown_score / top_sum
+            > struct.unpack("!f", bytes.fromhex(self.config["min_none_weight"]))[0]
+        ):
             self.print_output(input, int(t.category_name))
         else:
             # to keep track if a topic other than unknown passes the filtering
@@ -139,9 +144,17 @@ class ChromeTopicsAPIClassifier(TopicsAPIClassifier):
             for t in topics:
                 if (
                     int(t.category_name) != self.config["unknown_topic_id"]
-                    and t.score >= self.config["min_category_weight"]
+                    and t.score
+                    >= struct.unpack(
+                        "!f", bytes.fromhex(self.config["min_category_weight"])
+                    )[0]
                     and t.score / top_sum
-                    >= self.config["min_normalized_weight_within_top_n"]
+                    >= struct.unpack(
+                        "!f",
+                        bytes.fromhex(
+                            self.config["min_normalized_weight_within_top_n"]
+                        ),
+                    )[0]
                 ):
                     other = True
                     self.print_output(input, int(t.category_name))
