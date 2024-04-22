@@ -1,0 +1,34 @@
+{
+    "model_filename": "model.tflite",
+    "override_list_filename": "override_list.tsv",
+    "override_list_input_column": "domain",
+    "override_list_topics_column": "topics",
+    "model_version": 5,
+    "taxonomy_filename": "taxonomy.tsv",
+    "taxonomy_version": 2,
+    "taxonomy_id_column": "ID",
+    "taxonomy_name_column": "Topic",
+    "meaningless_prefix_regex": "^(www)\\.",
+    "meaningless_prefix_version": 0,
+    "utility_buckets_filename": "utility_buckets.tsv",
+    "utility_buckets_toplevel_column": "Top-Level Topics",
+    "utility_buckets_utility_column": "Utility Buckets",
+    "utility_buckets_utility_levels": [
+        {
+            "name": "Standard",
+            "level": 0
+        },
+        {
+            "name": "High",
+            "level": 1
+        }
+    ],
+    "utility_buckets_version": 1,
+    "max_categories": 5,
+    "min_none_weight": "3f4ccccd",
+    "min_category_weight": "3c23d70a",
+    "min_normalized_weight_within_top_n": "3e800000",
+    "number_topics": 469,
+    "unknown_topic_name": "Unknown",
+    "unknown_topic_id": -2
+}

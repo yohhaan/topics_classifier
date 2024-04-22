@@ -4,8 +4,10 @@ This repository reproduces Google's implementations of the Topics API [for the
 Web](https://privacysandbox.com/proposals/topics/) and [for
 Android](https://developer.android.com/design-for-safety/privacy-sandbox/topics).
 This is mainly used in [my
-research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html) to study
-the [privacy and utility guarantees](https://petsymposium.org/popets/2024/popets-2024-0004.php) of these proposals.
+research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
+to study the privacy and utility guarantees of these proposals:
+[PETS'24](https://petsymposium.org/popets/2024/popets-2024-0004.php) and
+[SecWeb'24](https://arxiv.org/abs/2403.19577).
 
 ## Getting started
 
@@ -16,7 +18,7 @@ direct integration with VS code or for manual deployment instructions.
 
 ## Usage
 ```
-usage: python3 classify.py [-h] -mv {chrome1,chrome4,android1,android2} -ct {topics-api,model-only,raw-model} -i INPUTS [INPUTS ...] [-id [INPUTS_DESCRIPTION ...]] [-ohr]
+usage: python3 classify.py [-h] -mv {chrome1,chrome4,chrome5,android1,android2} -ct {topics-api,model-only,raw-model} -i INPUTS [INPUTS ...] [-id [INPUTS_DESCRIPTION ...]] [-ohr]
 
 Reimplementations of the Topics API
 
@@ -28,7 +30,7 @@ options:
                         make output human readable, does not work with --classification-type raw-model
 
 required optional arguments:
-  -mv {chrome1,chrome4,android1,android2}, --model_version {chrome1,chrome4,android1,android2}
+  -mv {chrome1,chrome4,chrome5,android1,android2}, --model_version {chrome1,chrome4,chrome5,android1,android2}
                         model version to use
   -ct {topics-api,model-only,raw-model}, -classification_type {topics-api,model-only,raw-model}
                         type of classification: either run the full Topics classification (override+model+filtering), the model only (model+filtering), or get the raw classification by the model
@@ -49,6 +51,13 @@ required optional arguments:
       formatted in the list shipped by Google, see [here](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
     - Web taxonomy version: 2 (469 topics)
     - Introduction of utility buckets: version 1
+
+- [`chrome5`](chrome5/config.json)
+    - Web model version: 5
+    - Override list: 45 270 domains (about 45k)
+    - Web taxonomy version: 2 (469 topics)
+    - Utility buckets version: 1
+    - Note: only change with `chrome4` is the modification of the override list, see [here](https://issues.chromium.org/issues/325123734)
 
 - [`android1`](android1/config.json)
     - Android model version: 1

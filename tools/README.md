@@ -28,8 +28,7 @@ of the Topics API:
 
 
 ## Other
-- Check for invalid characters in override list: `grep
-  ".*[^[:alpha:][:space:][:digit:]^,].*"`
+- Check for invalid characters in override list: `grep ".*[^[:alpha:][:space:][:digit:]^,].*" override_list.tsv`
 - Meaningless prefixes v2:
   ```json
   {

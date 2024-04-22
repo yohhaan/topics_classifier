@@ -336,7 +336,7 @@ if __name__ == "__main__":
     req_grp.add_argument(
         "-mv",
         "--model_version",
-        choices=["chrome1", "chrome4", "android1", "android2"],
+        choices=["chrome1", "chrome4", "chrome5", "android1", "android2"],
         help="model version to use",
         required=True,
     )
@@ -368,7 +368,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    chromeVersions = ["chrome1", "chrome4"]
+    chromeVersions = ["chrome1", "chrome4", "chrome5"]
 
     if args.output_human_readable and args.ct == "raw-model":
         raise Exception(
