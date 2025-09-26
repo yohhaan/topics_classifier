@@ -13,18 +13,10 @@
   `.proto`](https://source.chromium.org/chromium/chromium/src/+/main:components/optimization_guide/proto/page_topics_model_metadata.proto)
 
 ## Chrome validation
-To verify that we obtain the same result as the Google Chrome's implementation
-of the Topics API:
-- `./chrome_validation.sh` extract 1000 domains from crux in
-  `chrome_validation.domains` and classify them with
-  our implementation in `chrome_validation_chrome4.tsv`
-- Classify the same 1000 domains with Google Chrome by visiting
-  `chrome://topics-internals`, select the output: copy-paste the tab separated
-  table in `chrome_validation_chrome_internals.tsv`
-- Run `python3 chrome_validation.py chrome_validation_chrome4.tsv
-  chrome_validation_chrome_internals.tsv` to validate the local classification
-  with the one implemented in Chrome (incorrect and correct sets are returned,
-  incorrect should be empty)
+To verify that we obtain the same result as the Google Chrome's implementation of the Topics API:
+- `./chrome_validation.sh` extract 1000 domains from crux in `chrome_validation.domains` and classify them with our implementation in `chrome_validation_chrome4.tsv`
+- Classify the same 1000 domains with Google Chrome by visiting `chrome://topics-internals`, select the output: copy-paste the tab separated table in `chrome_validation_chrome_internals.tsv`
+- Run `python3 chrome_validation.py chrome_validation_chrome4.tsv chrome_validation_chrome_internals.tsv` to validate the local classification with the one implemented in Chrome (incorrect and correct sets are returned, incorrect should be empty)
 
 
 ## Other

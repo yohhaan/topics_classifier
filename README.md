@@ -1,20 +1,62 @@
 # topics classifier
 
-This repository reproduces Google's implementations of the Topics API [for the
-Web](https://privacysandbox.com/proposals/topics/) and [for
-Android](https://developer.android.com/design-for-safety/privacy-sandbox/topics).
-This is mainly used in [my
-research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
-to study the privacy and utility guarantees of these proposals:
-[PETS'24](https://petsymposium.org/popets/2024/popets-2024-0004.php) and
-[SecWeb'24](https://arxiv.org/abs/2403.19577).
+This repository reproduces Google's implementations of the Topics API [for the Web](https://privacysandbox.com/proposals/topics/) and [for Android](https://developer.android.com/design-for-safety/privacy-sandbox/topics).
+This is mainly used in [my research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html) to study the privacy and utility guarantees of these proposals: [PETS'24](https://petsymposium.org/popets/2024/popets-2024-0004.php) and [SecWeb'24](https://arxiv.org/abs/2403.19577).
 
-## Getting started
 
-Clone this repository, then install the required dependencies. A Dockerfile is
-provided under `.devcontainer/`, see
-[here](https://gist.github.com/yohhaan/b492e165b77a84d9f8299038d21ae2c9) for
-direct integration with VS code or for manual deployment instructions.
+## Instructions
+
+Start by cloning this repository:
+- `git clone git@github.com:yohhaan/topics_classifier.git` (SSH)
+- `git clone https://github.com/yohhaan/topics_classifier.git` (HTTPS)
+
+Then, follow either set of instructions (or install dependencies manually).
+- The [`.devcontainer/`](.devcontainer/) directory contains the config for  integration with VS Code (see [guide here](https://github.com/PoPETS-AEC/examples-and-other-resources/blob/main/resources/vs-code-docker-integration.md)).
+
+> <details><summary>Using the Docker image from the Container Registry</summary>
+>
+> This [GitHub workflow](.github/workflows/build-push-docker-image.yaml)
+> automatically builds and pushes the Docker image to GitHub's Container Registry
+> when the `Dockerfile` or the `requirements.txt` files are modified.
+>
+> 1. Pull the Docker image:
+> ```bash
+> docker pull ghcr.io/yohhaan/topics_classifier:main
+> ```
+> 2. Launch the Docker container, attach the current working directory (i.e.,
+> run from the root of the cloned git repository) as a volume, set the context
+> to be that volume, and provide an interactive bash terminal:
+> ```bash
+> docker run --rm -it -v ${PWD}:/workspaces/topics_classifier \
+>     -w /workspaces/topics_classifier \
+>     --entrypoint bash ghcr.io/yohhaan/topics_classifier:main
+> ```
+> 3. Execute the example script:
+> ```bash
+> ./test.sh
+> ```
+> </details>
+
+
+> <details><summary>Using a locally built Docker image</summary>
+>
+> 1. Build the Docker image:
+> ```bash
+> docker build -t topics_classifier:main .
+> ```
+> 2. Launch the Docker container, attach the current working directory (i.e.,
+> run from the root of the cloned git repository) as a volume, set the context
+> to be that volume, and provide an interactive bash terminal:
+> ```bash
+> docker run --rm -it -v ${PWD}:/workspaces/topics_classifier \
+>     -w /workspaces/topics_classifier \
+>     --entrypoint bash topics_classifier:main
+> ```
+> 3. Execute the example script:
+> ```bash
+> ./test.sh
+> ```
+> </details>
 
 ## Usage
 ```
@@ -47,8 +89,7 @@ required optional arguments:
 
 - [`chrome4`](chrome4/config.json)
     - Web model version: 4
-    - Override list: 47 128 domains (about 50k) -> 625 domains are incorrectly
-      formatted in the list shipped by Google, see [here](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
+    - Override list: 47 128 domains (about 50k) -> 625 domains are incorrectly formatted in the list shipped by Google, see [here](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html)
     - Web taxonomy version: 2 (469 topics)
     - Introduction of utility buckets: version 1
 
@@ -69,5 +110,4 @@ required optional arguments:
     - Override list: 10 014 apps (about 10k)
     - Android taxonomy version: 2 (446 topics)
 
-If a new model for the Topics API has been released and is not available here
-yet, please let me know by contacting me or opening an issue.
+If a new model for the Topics API has been released and is not available here yet, please let me know by contacting me or opening an issue.
