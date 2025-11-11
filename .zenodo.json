@@ -1,0 +1,28 @@
+{
+  "creators": [
+    {
+      "name": "Yohan Beugin",
+      "affiliation": "University of Wisconsin–Madison",
+      "orcid": "0000-0003-0991-7926"
+    }
+  ],
+  "title": "Topics API Classifier - Web and Android Re-implementation",
+  "version": "1.0.0",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.56553/popets-2024-0004",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ],
+  "keywords": [
+    "Computer Science",
+    "Privacy Sandbox",
+    "Advertising",
+    "Topics API",
+    "Third-party Cookies"
+  ],
+  "license": "gpl-3.0-or-later",
+  "upload_type": "software"
+}
