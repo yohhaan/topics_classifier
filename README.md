@@ -1,4 +1,5 @@
-# topics classifier
+# topics classifier 
+[![DOI](https://zenodo.org/badge/757161993.svg)](https://doi.org/10.5281/zenodo.17583616)
 
 This repository reproduces Google's implementations of the Topics API [for the Web](https://privacysandbox.com/proposals/topics/) and [for Android](https://developer.android.com/design-for-safety/privacy-sandbox/topics).
 This is mainly used in [my research](https://yohan.beugin.org/posts/2024_02_topics_api_web_classifier.html) to study the privacy and utility guarantees of these proposals: [PETS'24](https://petsymposium.org/popets/2024/popets-2024-0004.php) and [SecWeb'24](https://arxiv.org/abs/2403.19577).
